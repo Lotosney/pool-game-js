@@ -18,4 +18,4 @@ image.src ="./assets/sprites/spr_background4.png"
 
 setTimeout(()=>{
     Canvas.drawImage(image,{x:0,y:0});
-},6000);
+},1000);

@@ -1,54 +1,47 @@
 let sprites = {};
 let assetsStillLoading = 0;
 
-function assetsLoadingLoop(callback) {
+function assetLoadingLoop(callback) {
     if (assetsStillLoading) {
-        requestAnimationFrame(assetsLoadingLoop.bind(this, callback));
+        requestAnimationFrame(assetLoadingLoop.bind(this, callback));
     } else {
         callback();
     }
 }
 
-function loadAssets(callback){
-
-    function loadSprite(fileName){
+function loadAssets(callback) {
+    function loadSprite(filename) {
         assetsStillLoading++;
-
         let spriteImage = new Image();
-        spriteImage.src = "./assets/sprites/" + fileName;
-
-        spriteImage.onload = function(){
+        spriteImage.src = "./assets/sprites/" + filename;
+        spriteImage.onload = function () {
             assetsStillLoading--;
         }
-
         return spriteImage;
     }
 
-    sprites.background = loadSprite('spr_background4.png');
-    sprites.stick = loadSprite('spr_stick.png');
-    sprites.whiteBall = loadSprite('spr_whiteBall.png');
-    sprites.redBall = loadSprite('spr_redBall.png');
-    sprites.yellowBall = loadSprite('spr_yellowBall.png');
-    sprites.blackBall = loadSprite('spr_blackBall.png');
-    
-    
-    
-    
+    sprites.background = loadSprite("spr_background4.png");
+    sprites.stick = loadSprite("spr_stick.png")
+    sprites.whiteBall = loadSprite("spr_whiteBall.png")
+    sprites.redBall = loadSprite("spr_redBall.png")
+    sprites.yellowBall = loadSprite("spr_yellowBall.png")
+    sprites.blackBall = loadSprite("spr_blackBall.png")
 
-    assetsLoadingLoop(callback);
+    assetLoadingLoop(callback);
+
 }
 
-function getBallSpriteByColor(color){
+function getBallSpriteByColor(color) {
 
-    switch(color){
-
+    switch (color) {
         case COLOR.RED:
             return sprites.redBall;
         case COLOR.YELLOW:
-            return sprites.yellowBall;
+            return sprites.yelllowBall;
         case COLOR.BLACK:
             return sprites.blackBall;
         case COLOR.WHITE:
             return sprites.whiteBall;
+
     }
 }

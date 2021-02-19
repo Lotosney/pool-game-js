@@ -26,37 +26,6 @@ Ball.prototype.shoot=function(power, rotation){
     this.velocity=new Vector2(power*Math.cos(rotation), power* Math.sin(rotation))
     this.moving=true;
 }
-// Ball.prototype.collideWith = function(ball){
-//     const n = this.position.substract(ball.position)
-//     const dist = n.length();
-//     if(dist>BALL_DIAMETER){
-//         return
-//     }
-//     const un =n.multt(1/n.length());
-
-//     const ut = new Vector2(-un.y,un.x);
-
-//     const v1n = un.dot(this.velocity);
-//     const v1t = ut.dot(this.velocity);
-//     const v2n = un.dot(ball.velocity);
-//     const v2t = un.dot(ball.velocity);
-
-//     let v1nTag= v2n;
-//     let v2nTag= v1n;
-
-//     v1nTag =un.multt(v1nTag);
-//     const v1tTag = ut.multt(v1t);
-//     v2nTag =un.multt(v2nTag);
-//     const v2tTag = ut.multt(v2t);
-
-
-//     this.velocity = v1nTag.add(v1tTag);
-//     ball.velocity = v2nTag.add(v2tTag);
-
-//     this.moving = true;
-//     ball.moving = true;
-
-// }
 
 Ball.prototype.collideWith = function (ball) {
     //find a normal vector

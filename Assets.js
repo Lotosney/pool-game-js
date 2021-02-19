@@ -31,8 +31,6 @@ function loadAssets(callback){
     sprites.redBall = loadSprite('spr_redBall.png');
     sprites.yellowBall = loadSprite('spr_yellowBall.png');
     sprites.blackBall = loadSprite('spr_blackBall.png');
-
-
     assetsLoadingLoop(callback);
 
 }

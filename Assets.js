@@ -31,6 +31,7 @@ function loadAssets(callback){
     sprites.yellowBall = loadSprite('spr_yellowBall.png');
     sprites.blackBall = loadSprite('spr_blackBall.png');
     assetsLoadingLoop(callback);
+
 }
 
 function getBallSpriteByColor(color){

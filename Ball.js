@@ -120,4 +120,6 @@ Ball.prototype.collideWithTable = function (table) {
         }
     }
 
+
 }
+

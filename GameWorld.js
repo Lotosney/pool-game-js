@@ -25,14 +25,22 @@ function GameWorld(){
   this.stick = new Stick(
     new Vector2(413, 413),
     this.whiteBall.shoot.bind(this.whiteBall));
+
+    this.table = {
+      TopY:57,
+      RightX:1443,
+      BottomY:768,
+      LeftX:57
+  
+    }
 }
 GameWorld.prototype.handleCollisions = function () {
   for (let i = 0; i < this.balls.length; i++) {
-
+    this.balls[i].collideWithTable(this.table);
     for (let j = i + 1; j < this.balls.length; j++) {
       const firstball = this.balls[i];
       const secondball = this.balls[j];
-      firstball.collideWith(secondball);
+      firstball.collideWithBall(secondball);
     }
   }
 }

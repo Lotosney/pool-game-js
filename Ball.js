@@ -10,6 +10,10 @@ function Ball(position, color) {
 
 }
 Ball.prototype.update = function (delta) {
+
+    if(!this.visible){
+        return;
+    }
     this.position.addTo(this.velocity.mult(delta));
 
     this.velocity = this.velocity.mult(0.984);
@@ -21,6 +25,9 @@ Ball.prototype.update = function (delta) {
 }
 
 Ball.prototype.draw = function () {
+    if(!this.visible){
+        return ;
+      }
     Canvas.drawImage(this.sprite, this.position, BALL_ORIGIN)
 }
 Ball.prototype.shoot = function (power, rotation) {
@@ -79,6 +86,20 @@ Ball.prototype.collideWithBall = function (ball) {
     ball.moving = true;
 
 }
+Ball.prototype.collideWithPocket = function (pockets, pocketRadius) {
+    if(!this.visible){
+      return ;
+    }
+      let inPocket = pockets.some(pocket => {
+      return this.position.distFrom(pocket)< pocketRadius;
+    });
+  
+    if (!inPocket){
+      return;
+    }
+    this.visible = false ;
+    this.moving = false ;
+  }
 
 Ball.prototype.collideWithTable = function (table) {
     if (!this.moving || !this.visible) {
@@ -110,14 +131,6 @@ Ball.prototype.collideWithTable = function (table) {
 
     if (collided) {
         this.velocity = this.velocity.mult(0.984);
-    }
-
-    Ball.prototype.collideWith = function (object) {
-        if (object instanceof Ball) {
-            this.collideWithBall(object)
-        } else {
-            this.collideWithTable(table)
-        }
     }
 
 }

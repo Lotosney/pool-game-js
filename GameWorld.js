@@ -1,4 +1,4 @@
-const DELTA = 1 / 100;
+const DELTA = 1 / 177;
 
 function GameWorld(){
   this.balls = [
@@ -20,6 +20,16 @@ function GameWorld(){
     [new Vector2(413,413),COLOR.WHITE]
   ].map(params => new Ball(params[0], params[1]))
 
+  this.pockets = [
+    new Vector2 (750, 32),
+    new Vector2 (750, 794),
+    new Vector2 (62,62),
+    new Vector2 (1435, 62),
+    new Vector2 (62, 762),
+    new Vector2 (1435, 762)
+  ];
+  this.pocketRadius = 46 ;
+
 
   this.whiteBall = this.balls[this.balls.length - 1];
   this.stick = new Stick(
@@ -36,6 +46,7 @@ function GameWorld(){
 }
 GameWorld.prototype.handleCollisions = function () {
   for (let i = 0; i < this.balls.length; i++) {
+    this.balls[i].collideWithPocket(this.pockets , this.pocketRadius);
     this.balls[i].collideWithTable(this.table);
     for (let j = i + 1; j < this.balls.length; j++) {
       const firstball = this.balls[i];

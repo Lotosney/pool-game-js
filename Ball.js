@@ -133,4 +133,4 @@ Ball.prototype.collideWithTable = function (table) {
         this.velocity = this.velocity.mult(0.984);
     }
 
-}
+

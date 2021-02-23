@@ -30,3 +30,4 @@ Vector2.prototype.length = function(){
 Vector2.prototype.distFrom = function(vector){
   return this.substract(vector).length();
 }
+
